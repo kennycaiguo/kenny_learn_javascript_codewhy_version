@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+    <style>
+        .active{
+            background-color: pink;
+            color: white;
+            font-size: 20px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <script>
+      //1.传统的方式  
+    //   let lis = document.querySelectorAll("li")
+    //   for(let li of lis){
+    //     li.addEventListener("click",function(){
+    //         this.classList.add("active") //这里只能用this,不能用li否则只有最后一个有效果
+    //     })
+    //   }
+
+    //2.使用事件委托,统一在ul中监听
+    // let ul = document.querySelector("ul")
+    // ul.onclick = function(e){
+    //     // console.log("某个li被点击了...");
+   //    if(e.target !== ul){
+    //     e.target.classList.add("active")
+    //    }
+    // }
+
+    //3.新需求,从前选中的对象才添加样式,其他的样式把添加这个样式
+    // let lis = document.querySelectorAll("li")
+    // let ul = document.querySelector("ul")
+    // ul.onclick = function(e){
+    //     // console.log("某个li被点击了...");
+    //     //先吧所有的li是active样式移除,
+    //     for(let li of lis){
+    //         if(li.classList.contains("active"))
+    //         {
+    //             li.classList.remove("active") //这里不能用this
+    //         }
+           
+    //     }
+    //     //然后再给当前选中的li添加样式
+
+    //   if(e.target !== ul){
+    //     e.target.classList.add("active")
+    //    }
+    // }
+
+    //4.新需求的第二种实现方法
+    // let ul = document.querySelector("ul")
+    // ul.onclick = function(e){
+    //     // console.log("某个li被点击了...");
+    //     //先找到有active样式的样式
+    //     let liAct = ul.querySelector(".active")
+    //     if(liAct){
+    //         liAct.classList.remove("active")
+    //     }
+    //     //然后再给当前选中的li添加样式
+    //   if(e.target !== ul){
+    //     e.target.classList.add("active")
+    //    }
+    // }
+
+     //5.新需求的第三种实现方法,用变量记录选中的元素,在下一次点击的时候把这个元素的样式移除
+    let ul = document.querySelector("ul")
+    let lastLi = null
+    ul.onclick = function(e){
+        // console.log("某个li被点击了...");
+        //存在才移除样式
+        if(lastLi && e.target.tagName ==="LI"){
+            lastLi.classList.remove("active")
+        }
+        //然后再给当前选中的li添加样式,ul是不添加这个样式的.
+        if(e.target !== ul){
+            e.target.classList.add("active")
+             //保存本次选中的项,然后在下一次点击的时候移除他的样式
+            lastLi = e.target
+        }
+        
+       
+    }
+    </script>
+</body>
+</html>

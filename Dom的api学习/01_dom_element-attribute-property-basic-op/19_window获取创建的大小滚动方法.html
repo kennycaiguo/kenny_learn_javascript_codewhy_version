@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window获取创建的大小-滚动-方法</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 70px;
+            background-color: deeppink;
+            position: fixed;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .back{
+            position: fixed;
+            right:20px;
+            bottom:20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+         <button class="btn">滚动窗口</button>
+    </div>
+   
+    <button class="back">回到顶部</button>
+
+    <!-- 下面的br只是为了让浏览器窗口程序滚动条,方便我们的学习 -->
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <script>
+        //outerWidth 不常用
+        //outerHeight
+        console.log(window.outerWidth);
+        console.log(window.outerHeight);
+        //innerWidth 比较常用
+        //innerHeight
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+        console.log("=======================");
+        
+        //获取html元素的offsetWidth和offsetHeight
+        console.log(document.documentElement.offsetWidth);
+        console.log(document.documentElement.offsetHeight);
+        //获取window的滚动大小,这个还是比较常用的
+        //window.scrollX == window.pageXOffset
+        //window.scrollY == window.pageYOffset
+        window.onclick = function () {
+            console.log(window.scrollX);
+            console.log(window.scrollY);
+        }
+
+        //监听window的滚动事件
+        window.onscroll = function (){
+        //    console.log(window.scrollY);
+            
+        }
+        //小案例,实现点击一下按钮,窗口就往下滚动100px的效果
+        let btn = document.querySelector("button")
+        let box = document.querySelector(".box")
+        let btnBack = document.querySelector(".back") //返回按钮
+        let moveVal = 0
+        btn.onclick = function () {
+            window.scrollBy(0,100) //滚动是滚动了,但是如何让按钮同步下降呢,注意这里有一个单位问题
+            // moveVal +=200 //先在这里改变数值,然后在下面设置
+            // box.style.marginTop =moveVal+ "px" //需要加上px,否则不起作用
+            // console.log(box.style.marginTop);
+            //当然,也可以用css把按钮固定,参考上面的css代码
+            //设置返回按钮看见
+            btnBack.style.display = "inline"
+        }
+      
+       
+        btnBack.onclick = function(){
+            window.scrollTo(0,0)
+            //窗口滚动回去后,可以把按钮隐藏
+             btnBack.style.display = "none"
+        }
+    </script>
+</body>
+</html>

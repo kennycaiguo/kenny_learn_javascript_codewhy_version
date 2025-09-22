@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态创建列表</title>
+</head>
+<body>
+    <input type="text" id="new"> <button>add</button>
+    <ul></ul>
+    <script>
+       let btnAdd = document.querySelector("button") 
+       let newInput = document.querySelector("#new")
+       let fruitList = document.querySelector("ul")
+       let fruits = ["apple","cherry","banana"]
+       fruits.forEach(item=>{
+         let li = document.createElement("li")
+         li.textContent = item
+         fruitList.append(li)
+       })
+       //动态添加项
+       btnAdd.onclick = function (){
+         let li = document.createElement("li")
+         li.textContent = newInput.value
+         fruitList.append(li)
+         newInput.value = " "
+       }
+       
+    </script>
+</body>
+</html>

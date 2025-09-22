@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的全局属性:id,class,title,style,hidden</title>
+</head>
+<body>
+    <button onclick="doToggle()">切换</button>
+    <button class="switch">show/hide</button>
+    <div id="box" class="box" title="box" style="color: deeppink;" hidden>
+        div里面的文本,你好
+    </div>
+    <script>
+        //我的写法
+        var box = document.querySelector("#box")
+        var show = true
+        function doToggle(){
+            if(show){
+                box.style.display = "block"
+            }else {
+            box.style.display = "none" 
+         }
+         show= !show
+        } 
+    </script>
+    <script>
+        //老师的写法
+        //1.获取div
+        let boxDiv = document.querySelector(".box")
+        //2.获取按钮
+        let btn = document.querySelector(".switch")
+        //3.实现功能
+    //    btn.addEventListener("click",(e)=>{
+    //         boxDiv.hidden = !boxDiv.hidden
+    //    })
+
+       //也可以这么写
+       btn.onclick = function() {
+        boxDiv.hidden = !boxDiv.hidden
+       }
+    </script>
+
+</body>
+</html>

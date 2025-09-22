@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h5 color input</title>
+</head>
+<body>
+    <div class="box">
+        <h2>这是标题</h2>
+        <p>这是内容</p>
+    </div>
+    背景颜色:<input type="color" id="bgcolor" value="#ffffff"/> 
+    文字颜色:<input type="color" id="color" value="#000000"/>
+    <script>
+        let inbgcolor = document.querySelector("#bgcolor")
+        let incolor = document.querySelector("#color")
+        let box = document.querySelector(".box")
+        inbgcolor.addEventListener("change",function(e){
+            //  console.log(this.value);
+            box.style.backgroundColor = this.value
+        }) //选择完颜色后需要按回车才会有效果
+        incolor.addEventListener("change",function(e){
+            //  console.log(this.value);
+            box.style.color = this.value
+        }) 
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table form元素之间的导航</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>身高</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Jack</td>
+                <td>18</td>
+                <td>170cm</td>
+            </tr>
+            <tr>
+                <td>Mary</td>
+                <td>20</td>
+                <td>160cm</td>
+            </tr>
+            <tr>
+                <td>Joe</td>
+                <td>18</td>
+                <td>175cm</td>
+            </tr>
+        </tbody>
+    </table>
+     <br>
+     <hr>
+     <h2>用户注册</h2>
+    <form action="">
+        用户名:<input name="user" type="text"><br>
+        密&nbsp&nbsp&nbsp&nbsp码:<input name="pwd" type="password"><br>
+        <input name="hobby" type="checkbox" checked>喜欢玩打豆豆<br>
+        喜欢的水果:<select name="favorite" id="fruits">
+                    <option value="apple">苹果</option>
+                    <option value="orange">橙子</option>
+                    <option value="pear">梨子</option>
+                 </select>
+    </form>
+    <script>
+        //获取表格
+        // let table = document.body.children[0]
+        let table = document.body.children[0]
+        let table2 = document.body.firstElementChild
+        // console.log(table);
+        let rows = table.rows
+        // // console.log(rows);
+        // for(let row of rows){
+        //     console.log(row);
+        // }
+        //获取thead
+        console.log(table.tHead);
+        //获取tbody,注意:是tBodies
+        console.log(table.tBodies[0]);
+        //表格标题,table.caption,这个表格是没有的
+        console.log(table.caption); //null
+        //表脚,table.tFoot,这个表格也没有
+        console.log(table.tFoot); //null
+        let innerTr2 = table.tBodies[0].rows[1] //获取表格内容的第二行数据,此时是不算表头的.
+        console.log(innerTr2);
+        console.log(innerTr2.sectionRowIndex); //在tbody里面的行索引
+        console.log(innerTr2.rowIndex);//在整个表格里面的行索引
+        
+        console.log("===========================");
+        
+        // for(let cell of innerTr2.cells){ //这里不要使用in,需要使用of来迭代否则得不到正确的结果
+        //     // console.log(cell); //获取单元格,得到完整的th标签
+        //     console.log(cell.innerHTML); //获取单元格里面的文本
+        // }
+
+
+    </script>
+    <script>
+        //表单导航
+        let form = document.forms[0] //获取表单元素
+        console.log(form);
+        //获取表单的子元素form.elements是表示表单里面能够嵌套的标签,form.children是指form的默认子元素标签+我们添加的标签
+        console.log(form.elements); //方法1,这个没有br
+        // console.log(form.children); //方法2.这个会把br也算进来
+        //根据表单子元素的名称来获取子元素
+        console.log(form.elements.user); //<input name="user" type="text"><br>
+        console.log(form.elements.favorite); //获取select元素
+        console.log(form.elements.favorite.options); //获取select元素里面的子元素option的集合
+
+        
+    </script>
+</body>
+</html>

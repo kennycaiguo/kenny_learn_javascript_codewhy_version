@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cls1{
+           background-color: #999;
+           border: 1px solid deeppink;
+        }
+
+        .cls2{
+           text-align: center;
+           width: 200px;
+           height: 300px;
+           line-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" style="text-align: center;">
+        类名叫做box的div元素
+    </div>
+    <button class="btn1">单个类名</button>  <button class="btn2">多个类名</button>
+    <script>
+        //1.获取元素
+        let boxDiv = document.querySelector(".box")
+        let btn1 = document.querySelector(".btn1")
+        let btn2 = document.querySelector(".btn2")
+        //用js来修改元素的class有2种方法,第一种就是elem.className=类名,这种方法会覆盖原来的类名,有时候不是很好
+        btn1.onclick = function (e){
+           boxDiv.className = "cls1" 
+           console.log(boxDiv.className);
+           
+        }
+        //第二种方法使用classList,这种方法允许添加多个类名,不会覆盖原来的类名
+        btn2.onclick = function (e){
+            boxDiv.classList.add("cls2") //注意,这里是add方法说明这个不是数组是一个列表
+            console.log(boxDiv.className);
+            boxDiv.classList.toggle("box")
+        }
+    </script>
+</body>
+</html>

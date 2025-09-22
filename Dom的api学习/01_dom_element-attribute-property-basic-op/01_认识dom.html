@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <h2>我是标题</h2>
+        <p>我是内容,大家好</p>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <input type="text" name="" id="">
+    <button>搜索</button>
+    <button id="redirect">跳转</button>
+    <script>
+        let box = document.body.children[0]
+        console.log(box); //div元素
+        box.style.color = "deeppink"
+        let btn = document.getElementById("redirect")
+        btn.onclick = function() {
+            location.href = "https://www.google.com" //BOM操作
+        }
+        console.log("==============================");
+        console.log(document.documentElement); //获取到html标签以及他的子元素
+        //获取兄弟元素
+        console.log(box.nextElementSibling); //获取到ul标签
+        //获取h2
+        let h2 =box.children[0]
+        console.log(h2); //这里不能使用childNodes[0],这个得到的是#text节点
+        console.log(h2.nextElementSibling); //这里不能够使用nextSibling,得到的是#text节点
+        
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的class和style属性</title>
+    <style>
+        .yellow{
+            background-color: yellow;
+            color:white;
+            font-size: 17px;
+            border: 1px dashed #ccc;
+            width: 250px;
+            height: 250px;
+        }
+        .deeppink{
+            background-color: deeppink;
+            color:gray;
+            font-size: 18px;
+            border: 1px solid #999;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+        }
+        .lime{
+            background-color: lime;
+            color:skyblue;
+            font-size: 17px;
+            width: 220px;
+            height: 220px;
+        }
+        .purple{
+            background-color: purple;
+            color:white;
+            font-size: 17px;
+            border: 1px dashed deeppink;
+            line-height: 300px;
+            width: 250px;
+            height: 300px;
+        }
+        .brown{
+            background-color: brown;
+            color:green;
+            font-size: 19px;
+            width: 250px;
+            height: 280px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" style="text-align: center;">
+        类名叫做box的div元素
+    </div>
+    <p id="p1">
+        p并且的内容
+    </p>
+    <script>
+        //我们这里实现一个功能点击div元素把它的背景颜色修改为随机颜色,并且把柱体变大
+        let colors = ["red","yellow","green","blue","deeppink","pink","lime","purple","brown","sky blue"]
+        let index = Math.floor(Math.random()*colors.length)
+        console.log(index);
+        let boxDiv = document.querySelector(".box")
+        boxDiv.onclick = function (e) {
+            boxDiv.style.backgroundColor = colors[index]
+            boxDiv.style.color = "white"
+            boxDiv.style.fontSize = "24px"
+            index = Math.floor(Math.random()*colors.length)
+        }
+    </script>
+    <script>
+        //我们更加推荐使用添加类名的方法来改变样式
+        let p = document.querySelector("#p1")
+        let clses = ["yellow","deeppink","lime","purple","brown"]
+        let idx = Math.floor(Math.random()*clses.length)
+        console.log(idx);
+        
+        p.onclick = function(e) {
+            p.className = clses[idx]
+            idx = Math.floor(Math.random()*clses.length)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom操作元素style属性</title>
+    <style>
+        .box{
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" style="background-color: aqua; border: 1px dashed #999;">
+        div里面的文字
+    </div>
+    <script>
+        //元素的attribute和dom对象的property在syle中是这样子对应的,attribute的style中background-color对应Dom的backgroundColor
+        let box = document.querySelector(".box")
+        //我们也可以在标签在书写attribute,然后在js中使用dom对象的property来获取
+        // console.log(box.style);
+        console.log(box.style.backgroundColor);
+        //注意:这种方法无法读取到在style标签里面写的属性
+        // console.log(box.style.fontSize); //没有任何显示,说明获取不到
+        //此时需要使用getComputedStyle函数来获取,第一个参数是需要获取style的元素,第二个参数可以传递伪元素
+        console.log(getComputedStyle(box).fontSize);
+        
+    </script>
+</body>
+</html>

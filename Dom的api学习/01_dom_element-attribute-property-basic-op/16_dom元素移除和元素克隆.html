@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素移除和元素克隆</title>
+</head>
+<body>
+    <button class="clone">克隆box</button><button class="remove">移除原来的div</button>
+    <div class="box">
+        <h2>这里是标题</h2>
+        <p>这里是正文</p>
+    </div>
+    <script>
+        let divBox = document.querySelector(".box")
+        //这里,如果在克隆的时候传递false,就会创建浅拷贝,我们可以设置为true这样子拷贝才可见
+        //而且如果你传递false,他就只拷贝最外层的元素,子元素不会拷贝
+        //cloneNode不仅仅可以克隆元素节点,也可以克隆文本,注释等等的非元素节点
+        let btnCl = document.querySelector(".clone")
+        let count = 1
+        btnCl.onclick = function (){
+            let divCpy = divBox.cloneNode(true) 
+            divCpy.children[0].textContent = "标题" + count++
+            document.body.append(divCpy)
+        }
+       
+        let btn = document.querySelector(".remove")
+        btn.onclick = function (){
+            //这里最好使用元素remove方法,而不要使用父元素的remove方法,因为父元素的remove方法可能会移除所有
+            //元素移除自己时,会把他的子元素也一起移除
+            divBox.remove() 
+        }
+    </script>
+</body>
+</html>

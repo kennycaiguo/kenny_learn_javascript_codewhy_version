@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的data-*属性</title>
+</head>
+<body>
+    <div class="box" data-info="Hello World" data-msg="You Got Me" data-viewport-width="1000px" data-index-number="1">
+        div里面的文字
+    </div>
+    <script>
+        //data-*属性主要是用来解决用DOM无法获取自定义属性的问题,这些属性都会被放置到元素的dataset里面
+         let box = document.querySelector(".box")
+         console.log(box.dataset.viewportWidth); //viewport-width==>viewportWidth  1000px
+         console.log(box.dataset.indexNumber);   //index-number ===>indexNumber    1
+         console.log(box.getAttribute("data-msg")); //用box.getAttribute来获取的时候,前面的data-不可少
+         box.dataset.msg="I Got You" //设置值,注意,一定要去掉前面的data-
+         console.log(box.getAttribute("data-msg"));
+         
+    </script>
+</body>
+</html>

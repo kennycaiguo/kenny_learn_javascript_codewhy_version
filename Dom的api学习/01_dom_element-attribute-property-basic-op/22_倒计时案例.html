@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时案例</title>
+    <style>
+        .countdown{
+            color:deeppink;
+            font-size: 20px;
+        }
+        .countdown .time{
+            /* border: 1px solid #999; */
+            display: inline-block;
+            padding: 5px;
+            background-color: #cff7ec;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown">
+      <span class="time hour">03</span>
+      <span class="divider">:</span>
+      <span class="time minute">10</span>
+      <span class="divider">:</span>
+      <span class="time second">20</span>
+    </div>
+    <script>
+        //格式化函数,返回xx如01,09,11,12...,其实开源把这个函数作为一个工具函数写到另外一个js文件中.
+        function padLeft(content,count,padstr)
+        {
+            count = count ||2
+            padstr = padstr || '0'
+            content = String(content)
+            return content.padStart(count,padstr)
+        }
+       //获取时分秒对应的span
+       let hour = document.querySelector(".hour")
+       let minute = document.querySelector(".minute")
+       let second = document.querySelector(".second")
+
+       let dateEnd = new Date() //这个是我们的目标,只需要获取一次.
+       //获取结束的时分秒
+       dateEnd.setHours(24)
+       dateEnd.setMinutes(0)
+       dateEnd.setSeconds(0)
+       dateEnd.setMilliseconds(0) //这些代码写在外面可以提高运行效率.
+
+       setInterval(()=>{
+        //获取倒计时的hour,minute,second的值
+        let dateNow = new Date() //这个需要放置setInterval里面因为每一次都需要获取.
+        //计算这两个时间的间隔,然后对它取整
+        let timeInterval = Math.floor((dateEnd.getTime()-dateNow.getTime())/1000)
+        console.log(timeInterval);
+        //然后需要获取这个时间间隔的时分秒,使用整除和取余数的方法
+        let hrs = Math.floor(timeInterval/3600)
+        let mns = Math.floor((timeInterval/60)%60)
+        let secs = Math.floor(timeInterval%60)
+        //分别给他设置内容
+        hour.textContent=padLeft(hrs)
+        minute.textContent=padLeft(mns)
+        second.textContent=padLeft(secs)
+       },1000)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="add">+</button>
+    <button class="sub">-</button>
+    <h2 class="count">0</h2>
+
+    <script>
+        let btnAdd = document.querySelector(".add")
+        let btnSub = document.querySelector(".sub")
+        let h2El = document.querySelector(".count")
+        let counter = 0
+        btnAdd.onclick = function () {
+            counter++
+            h2El.textContent = counter
+        }
+        btnSub.onclick = function () {
+            if(counter<1){
+                alert("产品没有库存了,请添加库存")
+                return
+            } 
+            counter--
+            h2El.textContent = counter
+            
+        }
+    </script>
+</body>
+</html>

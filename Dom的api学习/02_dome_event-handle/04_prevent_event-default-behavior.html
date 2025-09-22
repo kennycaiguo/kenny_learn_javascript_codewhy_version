@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阻止事件的默认行为</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: #fafafa;
+        }
+        .box>p{
+            width: 100px;
+            height: 100px;
+            background-color: #b5fcfb;
+        }
+        button{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.google.com">Google搜索</a>
+    <div class="box">
+        <p>
+            <button>Click Me</button>
+        </p>
+    </div>
+
+    <script>
+        let box = document.querySelector(".box")
+        let pEl = document.querySelector("p")
+        let btn = document.querySelector("button")
+
+        box.onclick = function(e){
+            console.log("box div被点击了...");
+        }
+        pEl.onclick = function(e){
+            console.log("p标签被点击了...");
+        }
+        btn.onclick = function(e){
+            console.log("按钮被点击了...");
+            e.stopPropagation()
+        }
+        //事件捕获
+        box.addEventListener("click",function(e){
+            console.log("触发div的事件捕获...");
+            e.stopPropagation() //这里调用阻止方法后.按钮的点击事件不会触发,因为事件冒泡是在事件捕获传递完成之后发生
+        },true)
+
+        pEl.addEventListener("click",function(){
+            console.log("触发p标签的事件捕获...");
+        },true)
+
+        btn.addEventListener("click",function(e){
+            console.log("触发按钮的事件捕获...");
+            
+        },true)
+    </script>
+
+
+    <script>
+       let link = document.querySelector("a")
+       //超链接由一个默认行为,就是跳转到指定是链接,然后我们还可以给他额外添加事件处理
+       //比如弹出一个消息框
+       link.onclick = function(e){
+        //  e.preventDefault() //在这里是ok的
+         console.log("对不起,默认的跳转行为已经被阻止...")
+         e.preventDefault() //这里也是ok的
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h5实现日期选择器</title>
+</head>
+<body>
+    输入日期: 
+    <input type="date" 
+        id="datepick" 
+        value="2025-07-22"
+        min="2019-01-01"
+        max="2025-12-31">
+        <div>
+            <p id="info"></p>
+        </div>
+    <script>
+        let info = document.querySelector("#info")
+        let pick = document.querySelector("#datepick")
+        // console.log(info,pick);
+        
+        pick.addEventListener("change",function(e){
+            info.textContent ="当前日期是:"+ this.value
+            // console.log(this.value);
+            // console.log("value change");
+        })
+    </script>    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屏幕时钟案例</title>
+</head>
+<body>
+    <div class="box">
+        <h2>显示当前时间</h2>
+        <h3 class="info"></h3>
+    </div>
+    <script>
+        let box = document.querySelector(".box")
+        let info = document.querySelector(".info")
+       
+        //这个函数比较麻烦但是效果更好 格式:2025-09-10 18:28:30
+        function showDateTimeString() {
+            let d = new Date() //每一次都需要new
+            let yr =d.getFullYear()
+            let mn =new String( d.getMonth()+1).padStart(2,"0")
+            let dy =new String( d.getDate()).padStart(2,"0")
+
+            let h = d.getHours()
+            if(h<10){
+                h = "0" + h
+            }
+
+            let m = d.getMinutes()
+            if(m<10){
+                m = "0" + m
+            }
+            
+            let s = d.getSeconds()
+            if(s<10){
+                s = "0"+ s
+            }
+
+            info.innerHTML = `${yr}-${mn}-${dy} ${h}:${m}:${s}`
+        }
+        
+        //显示18:28:30
+        function showTimeString2(params) {
+         let d = new Date() //每一次都需要new
+         info.innerHTML = d.toLocaleTimeString()
+       }
+
+       //显示2025/9/10 18:28:30
+       function showDatetimeStr(params) {
+         let d = new Date() //每一次都需要new
+         info.innerHTML = d.toLocaleString()
+       }
+
+        setInterval(()=>{
+            showDateTimeString()
+            // showTimeString2()
+            // showDatetimeStr()
+        },1000)
+        // console.log(dateStr);
+        
+    </script>
+</body>
+</html>

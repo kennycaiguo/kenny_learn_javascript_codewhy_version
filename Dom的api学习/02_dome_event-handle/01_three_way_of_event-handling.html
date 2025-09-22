@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理1_认识事件</title>
+</head>
+<body>
+    <!-- 方式1,直接在html中监听事件,已经基本不使用 -->
+    <button onclick="console.log('按钮1被点击了...')">按钮1</button>
+    <button class="btn2">按钮2</button>
+    <button class="btn3">按钮3</button>
+
+    <script>
+        //addEventListener事件监听方式
+        let btn3 = document.querySelector(".btn3")
+        function hdClick1(){
+            console.log('按钮3被点击了...')
+        }
+        function hdClick2(){
+            console.log('我需要做点响应...')
+        }
+        // //这种方式的好处就是可以多次添加,而且不会覆盖,一个事件可以触发多个函数
+        btn3.addEventListener("click",hdClick1)
+        btn3.addEventListener("click",hdClick2) 
+        ////添加鼠标进入事件监听
+        btn3.addEventListener("mouseenter",()=>{
+            console.log("鼠标进来了....");
+            
+        }) 
+        btn3.addEventListener("mouseleave",()=>{
+            console.log("鼠标出去了....");
+            
+        }) 
+        
+    </script>
+
+    <script>
+        //onclick监听事件方式
+        let btn2 = document.querySelector(".btn2")
+        function handle1(){
+            console.log("按钮2被点击了....");
+        }
+        function handle2(){
+            console.log("这里执行第二个处理函数....");
+        }
+        // btn2.onclick =[handle1,handle2] //这种方法不能添加多个函数,即使你用了一个数组,它还是没有用.
+       btn2.onclick = handle1
+       btn2.onclick = handle2
+
+    </script>
+
+</body>
+</html>

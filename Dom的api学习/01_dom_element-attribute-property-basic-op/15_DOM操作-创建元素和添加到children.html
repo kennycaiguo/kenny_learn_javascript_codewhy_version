@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建元素</title>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+       //dom创建元素
+       //1.获取div元素
+       let div = document.querySelector(".box")
+       let h2 = document.createElement("h2")
+       h2.textContent="Hello,我是dom创建的h2"
+       h2.className = "title"
+       //append
+    //    div.appendChild(h2)  //这个是老方法
+    //    div.append(h2)          //这个是新方法,而且它可以一次插入多个元素
+      let p = document.createElement("p")
+      p.textContent = "我是p元素"
+      p.className="content"
+      div.append(h2,p)   //插入多个元素
+       
+      let ul = document.createElement("ul")
+      let li = document.createElement("li")
+      li.textContent = "second li"
+      ul.append(li)
+      li = document.createElement("li")
+      li.textContent="first li"
+      //prepend
+      ul.prepend(li)
+
+      
+      document.body.append(ul)
+      //before and after 
+      //   ul.before(div) //把ul放置div的后面,因为ul前面有div嘛
+      ul.after(div)  //把ul放置div前面,因为ul后面有div嘛
+
+      let h1=document.createElement("h1")
+      h1.textContent="我是大标题"
+      document.body.prepend(h1)
+      //replaceWith
+      let span = document.createElement("span")
+      span.textContent="我是span的内容"
+      p.replaceWith(span) //会替换元素和他的所有子元素
+
+    </script>
+</body>
+</html>

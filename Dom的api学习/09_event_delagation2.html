@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托2</title>
+</head>
+<body>
+    <div class="box">
+        <button data-action="remove">移除</button>
+        <button data-action="new">新建</button>
+        <button data-action="search">搜索</button>
+    </div>
+    <script>
+       //在div的点击事件中(通过按钮的事件冒泡触发)根据点击的按钮的文本来输出不同的信息
+    //    方式1
+    //    let div = document.querySelector(".box")
+    //    div.onclick = function(e){
+    //        switch(e.target.textContent){
+    //           case "移除":
+    //             console.log("点击了移除按钮...");
+    //             break;
+    //           case "新建":
+    //             console.log("点击了新建按钮...");
+    //             break;
+    //           case "搜索":
+    //              console.log("点击了搜索按钮...");
+    //              break;
+    //        }
+    //    }
+    //    方式2
+    let div = document.querySelector(".box")
+    div.onclick = function(e){
+           switch(e.target.dataset.action){
+              case "remove":
+                console.log("点击了移除按钮...");
+                break;
+              case "new":
+                console.log("点击了新建按钮...");
+                break;
+              case "search":
+                 console.log("点击了搜索按钮...");
+                 break;
+           }
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素属性分类</title>
+</head>
+<body>
+    <!-- id,title,class和href是内置属性,也叫做标准属性,mywidth和myheight是自定义属性,也叫做非标准属性 -->
+    <div class="box" id="box" title="box" mywidth="200" myheight="300" >
+        div的内容
+    </div>
+    <a href="www.google.com">Google</a>
+    <script>
+      //1.所有属性,包括标准和非标准属性都通用的操作
+      let box = document.querySelector(".box")
+      //1.获取属性
+      let m_width = box.getAttribute("mywidth")
+      console.log(m_width); //200
+      //2.设置属性
+      box.setAttribute("myheight",500)
+      console.log(box.getAttribute("myheight")); //500,修改成功
+      box.setAttribute("id","myBox")
+      console.log(box.id); //也是修改成功
+      //3.判断是否由某个属性
+      console.log(box.hasAttribute("mywidth"));
+      console.log(box.hasAttribute("title"));
+      //4.删除应该属性
+      box.removeAttribute("myheight") 
+      console.log(box.hasAttribute("myheight"));
+      //5.attributes得到所有属性,其中每一个属性是一个对象,有name和value属性
+      console.log(box.attributes);
+      box.setAttribute("mylove","anna hong")
+      console.log(box.attributes);
+      for (const attr of box.attributes) {
+         console.log(attr.name,attr.value);
+      }
+      
+      
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+  <style>
+      #dad{
+        background-color:#999;
+        width: 200px;
+        height: 200px;
+        top: 100px;
+        left: 100px;
+    }
+  </style>
+</head>
+<body>
+    <div id="dad" >
+        <div id="box">我是孩子div的内容</div>
+        <button id="down">down</button>
+    </div>
+    <script>
+        //用property来获取的属性是由单位的,而且是字符串,我们需要先去除单位,再把它变为整数
+        //然后再设置回去,此时需要+"px"
+        let divDad = document.querySelector("#dad")
+        let downBtn = document.querySelector("#down")
+        // let mt = divDad.style.marginTop 
+        // let mtValue = mt.substring(0,mt.length-2)
+        let mtValue = 0
+        downBtn.onclick = function(){
+            // divDad.offsetTop +=100
+            // console.log(divDad.offsetTop);
+            // divDad.style.top +=100
+            // console.log(divDad.style.top);
+            
+            // let mtValue = mt[mt.indexOf("px")]
+            mtValue = parseInt(mtValue)
+            mtValue += 100
+            console.log(mtValue);
+            divDad.style.marginTop = mtValue + "px"
+            // console.log(divDad.style.marginTop);
+             
+            
+        }
+    </script>
+</body>
+</html>

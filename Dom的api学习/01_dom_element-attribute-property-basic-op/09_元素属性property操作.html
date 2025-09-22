@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的属性:property</title>
+</head>
+<body>
+    <div class="box" id="myBox" info="hello">
+        div的文本
+    </div>
+
+    姓名:<input type="text" class="in" value="">
+    <script>
+        //property就是对象里面的属性,我们用Dom获取到的就是一个个的对象,此时我们操作的就是property
+        //每一个HTML标签的内置属性或者说标准属性attribute都会对应一个DOM对象的属性property,
+        // 所以对于标准属性,你可以有2种方法来获取,对应自定义的属性attribute,他们是没有对应的property的.
+        //自定义属性不能用.操作符来获取
+        //1.获取元素的dom对象
+        let divBox = document.querySelector(".box")
+        //class he id是标准属性,可以有2种方法获取
+        console.log(divBox.getAttribute("id")); //myBox
+        console.log(divBox.id);                 //myBox
+        //自定义属性无法使用.操作符获取,只能使用getAttribute方法来获取
+        console.log(divBox.info);                   //undefined
+        console.log(divBox.getAttribute("info"));   // hello 
+        //不过用js代码设置的属性是可以用.操作符来获取,用getAttribute获取不到,查看HTML源码,发现是不会添加到源码中的
+        //用setAttribute方法是可以往标签里面添加属性的.用DOM操作是不能往标签里面添加属性的.
+        //虽然DOM对象和指定的标签关联,但是DOM对象添加property不会反映在标签上面.
+        divBox.msg = "Welcome"
+        console.log(divBox.msg);
+        console.log(divBox.getAttribute("msg")); //null 
+        
+        let input = document.querySelector(".in")
+        // input.value = "Jordon" //这个的优先级比较高,用它设置后,下面的方法无法覆盖
+        input.setAttribute("value","Mike") //用这种方法设置属性可能不会在界面上实时更新
+
+    </script>
+</body>
+</html>

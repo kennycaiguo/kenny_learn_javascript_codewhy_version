@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button class="btn">Click Me</button>
+    </div>
+    <script>
+      //获取div
+      let div = document.querySelector("div")
+      //获取按钮
+      let btn = document.querySelector(".btn")
+      btn.addEventListener("click",function(e){
+          console.log("按钮被点击...");
+          console.log(e);
+          
+      })
+      div.addEventListener("click",function(e){
+          console.log("div被点击...");
+        //   console.log(e);
+        //   console.log(e.type);
+        //   console.log(e.eventPhase);//如果直接点击div,是2,如果点击按钮,这里是3表示从按钮冒泡过来的.
+        console.log(e.target);
+        console.log(e.currentTarget)
+      })
+
+
+    </script>
+</body>
+</html>

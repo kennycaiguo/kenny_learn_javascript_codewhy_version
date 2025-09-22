@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取任意节点或者标签</title>
+</head>
+<body>
+    <div class="box">
+        <h2>这是标题</h2>
+        <div class="container">
+            <p>
+                这是一个段落,<span class="keyword">Good Things</span>,好物分享
+            </p>
+        </div>
+        <div class="article">
+            <h2 id="title">小标题</h2>
+            <p>
+                这是文章内容,希望你喜欢.
+            </p>
+        </div>
+    </div>
+    <script>
+      //任务1,把span文本给我深粉红色
+      let span = document.querySelector(".keyword") //当然还可以使用document.getElementsByClassName(类名称)[0]来获取
+      span.style.color = "deeppink"
+     //任务2.获取文章div里面的h2把他的背景给我灰色
+      let h2title = document.getElementById("title")
+      h2title.style.backgroundColor = "#ccc"
+
+    // getElementByClassName,getElementsByTagName,querySelector或者querySelectAll也可以在其他元素上面使用
+    let box = document.getElementsByClassName("box")[0]
+    console.log(box);
+    // let divCon = box.querySelector(".container") //ok    
+    let divCon = box.getElementsByClassName("container")[0] //ok    
+    console.log(divCon);
+    //
+    let divArticle = document.getElementsByClassName("article")[0]
+    //利用div来获取h2
+   
+    let h2El = divArticle.getElementsByTagName("h2")[0]
+    console.log(h2El);
+    </script>
+</body>
+</html>

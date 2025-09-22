@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom事件冒泡和事件捕获</title>
+    <style>
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(243, 243, 243);
+        }
+
+        .box span{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 47, 47);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+        <span></span>
+    </div>
+
+    <script>
+         let span = document.querySelector("span")
+         let boxDiv = document.querySelector(".box")
+         let body = document.body
+        //  span.onclick = function(){
+        //     console.log("span标签被点击了...");
+        //  }
+        //  boxDiv.onclick = function(){
+        //     console.log("div标签被点击了...");
+        //  }
+        //  body.onclick = function(){
+        //     console.log("body被点击了...");
+        //  }
+        //默认方式是事件冒泡
+        //另外一种方式
+        span.addEventListener("click",()=>{
+            console.log("span标签被点击了...冒泡");
+        })
+
+        boxDiv.addEventListener("click",()=>{
+            console.log("div标签被点击了...冒泡");
+        })
+
+        body.addEventListener("click",()=>{
+            console.log("body被点击了...冒泡");
+        })
+
+        //如果你想使用事件捕获,你需要给addEventListener添加一个参数,是true就说明使用事件捕获
+        span.addEventListener("click",()=>{
+            console.log("span标签被点击了...捕获");
+        },true)
+
+        boxDiv.addEventListener("click",()=>{
+            console.log("div标签被点击了...捕获");
+        },true)
+
+        body.addEventListener("click",()=>{
+            console.log("body被点击了...捕获");
+        },true)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document对象</title>
+</head>
+<body>
+    <!-- 这里是注释 -->
+     这个是文本节点
+     <div class="box">div节点</div>
+     <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+     </ul>
+    <script>
+        // console.log(document.doctype);
+        // console.log(document.body);
+        // console.log(document.head);
+        // console.log(document.documentElement);
+        // console.log(document.documentURI);
+        
+        //childNodes就是指所有的子节点包括元素和非元素,children是指元素节点
+        // console.log(document.childNodes); //[<!DOCTYPE html>, html]
+        // console.log(document.children); //[html]
+        let body = document.body
+        console.log(body.childNodes); //[text, comment, text, div.box, text, ul, text, script]
+        console.log(body.children); //[div.box, ul, script]
+        //firstChild得到的是第一个节点,firstElementChild得到的是第一个元素节点
+        let txtEl = body.firstChild
+        console.log(txtEl);
+        console.log(body.firstElementChild);
+        //获取注释节点
+        console.log(txtEl.nextSibling);
+        //获取body节点的父节点parentNode
+        console.log(body.parentNode); //html
+        
+
+    </script>
+</body>
+</html>
