@@ -1,0 +1,2 @@
+# kenny_learn_javascript_codewhy_version
+跟codewhy学习js
