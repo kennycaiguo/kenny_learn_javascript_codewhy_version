@@ -4,10 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>常见鼠标事件</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="box"></div>
     <script>
+       //定义一个鼠标按下的标记
+       let isDown = false 
+       let box = document.querySelector(".box")
+    //    box.onclick = function(){
+    //     console.log("div clicked...");
+    //    }
+       box.addEventListener("click",function(){
+        console.log("div clicked...");
+       })
+
+       box.addEventListener("contextmenu",function(e){
+        console.log("div right clicked...");
+        e.preventDefault() //阻止事件的默认行为,比如这里不让他弹出菜单
+       })
+
+       box.onmousedown = function(){
+        console.log("鼠标左键按下...");
+        isDown = true
+       }
+
+       box.onmouseup = function(){
+        console.log("鼠标左键弹起...");
+        isDown = false
+       }
+       box.onmousemove = function(){
+        if(isDown) 
+            console.log("鼠标在div里面移动...");
+       }
+
+
+    //    box.addEventListener("mouseover",function(){
+    //     console.log("Mouse over div");
+    //    })
+    //    box.addEventListener("mouseout",function(){
+    //     console.log("Mouse out of div");
+    //    })
 
     </script>
 </body>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouseover和mouseenter的区别</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box p{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            /* margin-left: 100px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p></p>
+    </div>
+    <script>
+        let box = document.querySelector(".box")
+        let p = document.querySelector("p")
+        //1.mouseenter and mouseleave
+        // box.onmouseenter=function(){
+        //     console.log("box mouse enter...");
+            
+        // }
+        // box.onmouseleave=function(){
+        //     console.log("box mouse leave...");
+            
+        // }
+        // p.onmouseenter=function(){
+        //     console.log("p mouse enter...");
+            
+        // }
+        // p.onmouseleave=function(){
+        //     console.log("p mouse leave...");
+            
+        // }
+        //2.mouseover and mouseout
+        box.onmouseover=function(){
+            console.log("box mouse over...");
+        }
+        box.onmouseout=function(){
+            console.log("box mouse out...");  
+        }
+        // p.onmouseover=function(){
+        //     console.log("p mouse over...");
+        // }
+        // p.onmouseout=function(){
+        //     console.log("p mouse out...");  
+        // }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouseenter和mouseover应用的区别</title>
+    <style>
+        .box{
+            display: flex;
+            width: 300px;
+            height: 300px;
+        }
+
+        .box button{
+          flex: 1;
+          height: 50px;
+        }
+
+        .box button:nth-child(1){
+            background-color: yellow;
+        }
+        .box button:nth-child(2){
+            background-color: pink
+        }
+        .box button:nth-child(3){
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+   <div class="box">
+    <button class="btn1">删除</button>
+    <button class="btn2">新增</button>
+    <button class="btn3">搜索</button>
+   </div>
+   <script>
+      //方式一
+    //   let btn1 = document.querySelector(".btn1")
+    //   let btn2 = document.querySelector(".btn2")
+    //   let btn3 = document.querySelector(".btn3")
+   
+    //   btn1.onmouseenter = function(){
+    //     console.log(this.textContent);
+    //   }
+    //   btn1.onmouseleave = function(){
+    //     console.log(this.textContent+" mouse leave...");
+    //   }
+    //   btn2.onmouseenter = function(){
+    //     console.log(this.textContent);
+    //   }
+    //   btn2.onmouseleave = function(){
+    //     console.log(this.textContent+" mouse leave...");
+    //   }
+    //   btn3.onmouseenter = function(){
+    //     console.log(this.textContent);
+    //   }
+    //   btn3.onmouseleave = function(){
+    //     console.log(this.textContent+" mouse leave...");
+    //   }
+    //当然,可以使用循环
+    // let btns = document.querySelectorAll("button")
+    // for(btn of btns){
+    //    btn.onmouseenter=function(){
+    //      console.log(this.textContent);
+    //    }
+    //    btn.onmouseleave=function(){
+    //      console.log(this.textContent+" mouse leave...");
+    //    }
+    // }
+    //方式二
+    let box = document.querySelector(".box")
+    box.onmouseover = function (e) {
+        if(e.target!=box)
+        {
+            console.log(e.target.textContent);
+        }
+        
+    }
+    box.onmouseout = function (e) {
+        if(e.target!=box)
+        {
+            console.log(e.target.textContent+"mouse out...");
+        }
+       
+    }
+   </script>
+</body>
+</html>
