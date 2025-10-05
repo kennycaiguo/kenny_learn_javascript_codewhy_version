@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用键盘事件</title>
+</head>
+<body>
+    <input type="text">
+   <button>搜索</button>
+    <script>
+         let input = document.querySelector("input")
+      //    input.onkeydown=function(e){
+      //          console.log("keydown "+e.key);   
+      //    }
+      //    input.onkeypress=function(e){
+      //          console.log("key press");   
+      //    }
+      //    input.onkeyup=function(e){
+      //          console.log("key up...");   
+      //    }
+      let btn = document.querySelector("button")
+      btn.onclick = function(e){
+          console.log("正在搜索:"+input.value);
+          
+      }
+      
+      input.onkeyup = function(e){
+            // console.log(e.key);
+            
+          if(e.key === 'Enter'){
+            console.log("正在搜索:"+input.value);
+          }
+      }
+
+      //
+      document.onkeyup= function(e) {
+            console.log("doc key up...");
+            if(e.key === 's'){
+              input.focus()
+            }
+      }
+    </script>
+</body>
+</html>
