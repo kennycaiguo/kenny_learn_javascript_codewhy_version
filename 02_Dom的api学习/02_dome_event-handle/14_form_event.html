@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单事件</title>
+</head>
+<body>
+    <form action="/reg">
+        <input type="text">
+        <button type="reset">重置</button>
+        <button type="submit">提交</button>
+    </form>
+    
+    <script>
+        let input = document.querySelector("input")
+        //1.获取焦点和事情焦点
+        input.onfocus = function (e) {
+            console.log("获取焦点事件....");
+        }
+        input.onblur = function (e) {
+            console.log("失去焦点事件....");
+        }
+
+        //2.oninput和onchange事件
+        input.oninput = function (e) {
+            console.log("触发了输入事件...");
+        }
+
+        input.onchange = function (e) {
+            console.log("触发了内容改变事件...");
+        }
+
+        //获取表单元素
+        let form = document.querySelector("form")
+        //3.表单的重置和条件事件监听
+        form.onreset = function(){
+            console.log("发生了表单重置事件....");
+        }
+        form.onsubmit = function(e){
+            console.log("发生了表单提交事件,内容是:");
+            e.preventDefault()
+        }
+    </script>
+</body>
+</html>
