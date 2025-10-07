@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监听文档加载事件</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+        }
+        /* img{
+            width: 300px;
+            height: 300px;
+        } */
+    </style>
+</head>
+<body>
+   
+    <script>
+       let box
+       window.onload = function (e) {
+        console.log("document fished load...");
+        // box = document.querySelector(".box")
+        // box.style.backgroundColor = "deeppink"
+        let img = document.querySelector("img")
+         console.log(img.src); // ok
+        //  console.log("onload:",img.style.width,img.style.height); //还是获取不到,因为这个属性需要用css设置
+         console.log("onload:",img.offsetWidth,img.offsetHeight);  //onload: 400 384
+       }
+       
+       //DOMContentLoaded事件监听
+       window.addEventListener("DOMContentLoaded",function(){
+         console.log("Dom finished load...");
+         let img = document.querySelector("img")
+         box = document.querySelector(".box")
+         box.style.backgroundColor = "deeppink"
+        //  console.log(img.src); // ok
+        //  console.log(img.style.width,img.style.height); //获取不到
+        console.log("domcontentloaded:",img.offsetWidth,img.offsetHeight); 
+       })
+
+       window.onresize = function(){
+          console.log("触发了resize事件...");
+       }
+    </script>
+     <div class="box"></div>
+     <img src="./images/1.jpg" alt="图片" width="400px">
+</body>
+</html>
